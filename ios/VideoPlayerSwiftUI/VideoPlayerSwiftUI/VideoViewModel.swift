@@ -9,7 +9,7 @@ import Foundation
 
 class VideoViewModel: ObservableObject {
     
-    @Published var results: [VideoFeed] = []
+    @Published var results = [VideoFeed]()
     
     init() {
         Task {
@@ -35,16 +35,17 @@ class VideoViewModel: ObservableObject {
     }
 }
 
-struct VideoFeed: Decodable {
+struct VideoFeed: Decodable, Hashable {
     let id: String
     let title: String
     let hlsURL: String
     let fullURL: String
     let description: String
     let author: VideoAuthor
+    let publishedAt: String
 }
 
-struct VideoAuthor: Decodable {
+struct VideoAuthor: Decodable, Hashable {
     let id: String
     let name: String
 }

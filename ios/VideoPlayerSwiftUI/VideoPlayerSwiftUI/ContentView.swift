@@ -13,25 +13,32 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                Text("Video player")
-                VideoPlayer(player: AVPlayer(url: URL(string: "https://www.youtube.com/watch?v=K51qem9z2Hc")!))
-                    .frame(height: 400)
-                
-                VStack(spacing: 20) {
-                    HStack {
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(viewModel.results, id: \.self) { res in
                         VStack(alignment: .leading) {
-                            Text("Title")
-                            Text("Author")
+                            VideoPlayer(player: AVPlayer(url: URL(string: "https://www.youtube.com/watch?v=K51qem9z2Hc")!))
+                                .frame(width: UIScreen.main.bounds.size.width, height: 200)
+                                
+                            VStack(spacing: 20) {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(res.title)
+                                        Text(res.author.name)
+                                    }
+                                    Spacer()
+                                }
+                                
+                                ScrollView {
+                                    Text(res.description)
+                                        .frame(width: UIScreen.main.bounds.size.width)
+                                }
+                            }.padding(.leading, 5)
+                            .padding(.trailing, 5)
                         }
-                        Spacer()
                     }
-                    
-                    VStack(alignment: .leading) {
-                        Text("asfasfsafaa asfsafsaf afsafasfasf asfafsafsa qwfaasfsafa fsasafasfasf asfasfasfsafasf asfasfsaf asfsafsaf asfasfsafa fasfsafa fasfsaf asfas fasfasfasf fas")
-                    }
-                }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5 ))
-            }
+                }
+            }.navigationTitle("Video Player")
         }
     }
 }
