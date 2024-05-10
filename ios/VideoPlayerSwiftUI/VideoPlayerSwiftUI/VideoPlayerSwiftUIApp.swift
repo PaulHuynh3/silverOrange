@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 @main
 struct VideoPlayerSwiftUIApp: App {
     var body: some Scene {

@@ -27,7 +27,7 @@ class VideoViewModel: ObservableObject {
             let res = try JSONDecoder().decode([VideoFeed].self, from: data)
             
             await MainActor.run {
-                self.results = res
+                self.results = res.sorted(by: {$0.publishedAt.compare($1.publishedAt) == .orderedAscending })
             }
         } catch {
             print("failred to reach endpoint \(error)")
