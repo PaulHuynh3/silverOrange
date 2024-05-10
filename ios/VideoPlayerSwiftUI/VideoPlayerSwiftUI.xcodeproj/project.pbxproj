@@ -15,6 +15,8 @@
 		3AF67A7925A64DBF00D360A7 /* VideoPlayerSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF67A7825A64DBF00D360A7 /* VideoPlayerSwiftUIUITests.swift */; };
 		EBACD8562BEC642400B0E133 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBACD8552BEC642400B0E133 /* VideoViewModel.swift */; };
 		EBACD8582BED76BD00B0E133 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBACD8572BED76BD00B0E133 /* VideoPlayer.swift */; };
+		EBACD85C2BEDDB5D00B0E133 /* PlayerControlButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBACD85B2BEDDB5D00B0E133 /* PlayerControlButtonsView.swift */; };
+		EBACD85E2BEDDBC400B0E133 /* PlayerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBACD85D2BEDDBC400B0E133 /* PlayerContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		3AF67A7A25A64DBF00D360A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBACD8552BEC642400B0E133 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
 		EBACD8572BED76BD00B0E133 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		EBACD85B2BEDDB5D00B0E133 /* PlayerControlButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlButtonsView.swift; sourceTree = "<group>"; };
+		EBACD85D2BEDDBC400B0E133 /* PlayerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				3AF67A5B25A64DBD00D360A7 /* VideoPlayerSwiftUIApp.swift */,
 				EBACD8572BED76BD00B0E133 /* VideoPlayer.swift */,
 				3AF67A5D25A64DBD00D360A7 /* ContentView.swift */,
+				EBACD85B2BEDDB5D00B0E133 /* PlayerControlButtonsView.swift */,
+				EBACD85D2BEDDBC400B0E133 /* PlayerContentView.swift */,
 				EBACD8552BEC642400B0E133 /* VideoViewModel.swift */,
 				3AF67A5F25A64DBF00D360A7 /* Assets.xcassets */,
 				3AF67A6425A64DBF00D360A7 /* Info.plist */,
@@ -272,7 +278,9 @@
 				EBACD8582BED76BD00B0E133 /* VideoPlayer.swift in Sources */,
 				3AF67A5E25A64DBD00D360A7 /* ContentView.swift in Sources */,
 				EBACD8562BEC642400B0E133 /* VideoViewModel.swift in Sources */,
+				EBACD85C2BEDDB5D00B0E133 /* PlayerControlButtonsView.swift in Sources */,
 				3AF67A5C25A64DBD00D360A7 /* VideoPlayerSwiftUIApp.swift in Sources */,
+				EBACD85E2BEDDBC400B0E133 /* PlayerContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

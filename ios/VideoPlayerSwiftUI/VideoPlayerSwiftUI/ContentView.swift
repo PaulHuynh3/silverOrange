@@ -33,51 +33,11 @@ struct ContentView: View {
                                     scrollViewProxy: value,
                                     results: viewModel.results
                                 )
-                                VStack {
-                                    ZStack {
-                                        VideoPlayer(player: player)
-                                            .frame(width: UIScreen.main.bounds.size.width, height: 300)
-                                            .id(index)
-                                            .onAppear() {
-                                                let url = URL(string: res.fullURL)!
-                                                player = AVPlayer(url: url)
-                                                player.play()
-                                            }
-                                            .onDisappear() {
-                                                player.pause()
-                                            }
-                                        if showControls {
-                                            controlButtons
-                                        }
-                                    }
-                                    .onTapGesture {
-                                        withAnimation {
-                                            showControls.toggle()
-                                        }
-                                        if isPlaying {
-                                            startTimer()
-                                        }
-                                    }
-                                }
-                                
-                                VStack {
-                                    ScrollView {
-                                        HStack {
-                                            VStack(alignment: .leading) {
-                                                Text("***\(res.title)***")
-                                                Text("*\(res.author.name)*")
-                                            }
-                                            Spacer()
-                                        }.padding(.bottom, 20)
-                                        
-                                        Text("***\(res.description)***")
-                                            .frame(width: UIScreen.main.bounds.size.width)
-                                    }
-                                }.padding(.horizontal, 5)
+                                PlayerContentView(player: $player, showControls: $showControls, timer: $timer, res: res, controlButtons: controlButtons, isPlaying: isPlaying, index: index)
                             }
                         }
                     }
-                }.navigationTitle("*Video Player*")
+                }.navigationTitle("Video Player")
             }
         }
     }
@@ -87,89 +47,6 @@ struct ContentView: View {
         timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
             withAnimation {
                 showControls = false
-            }
-        }
-    }
-}
-
-@available(iOS 15.0, *)
-struct PlayerControlButtons: View {
-        
-    @Binding var isPlaying: Bool
-    @Binding var timer: Timer?
-    @Binding var showPlayerControlButtons: Bool
-    @Binding var avPlayer: AVPlayer
-    @Binding var currentIndex: Int
-    var scrollViewProxy: ScrollViewProxy
-    var results: [VideoFeed]
-    
-    
-    var body: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                Button {
-                    if currentIndex > 0 {
-                        currentIndex -= 1
-                        scrollViewProxy.scrollTo(currentIndex)
-                        avPlayer.pause()
-                        let url = URL(string: results[currentIndex].fullURL)!
-                        avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
-                    }
-                } label: {
-                    Image(uiImage: UIImage(named: "previous")!)
-                        .resizable()
-                        .renderingMode(.template)
-                        .frame(width: 100, height: 100)
-                        .foregroundStyle(.white)
-                }
-                Button {
-                    if isPlaying {
-                        isPlaying = false
-                        avPlayer.pause()
-                        timer?.invalidate()
-                    }
-                    else {
-                        isPlaying = true
-                        avPlayer.play()
-                        startTimer(timeInterval: 5)
-                    }
-                } label: {
-                    Image(uiImage: isPlaying ? UIImage(named: "pause")! : UIImage(named: "play")!)
-                        .resizable()
-                        .renderingMode(.template)
-                        .frame(width: 100, height: 100)
-                        .foregroundStyle(.white)
-                    
-                }
-                Button {
-                    if currentIndex < results.count - 1 {
-                        currentIndex = currentIndex + 1
-                        scrollViewProxy.scrollTo(currentIndex)
-                        avPlayer.pause()
-                        let url = URL(string: results[currentIndex].fullURL)!
-                        avPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
-                    }
-                } label: {
-                    Image("next")
-                        .resizable()
-                        .renderingMode(.template)
-                        .frame(width: 100, height: 100)
-                        .foregroundStyle(.white)
-                    
-                }
-                Spacer()
-            }
-            Spacer()
-        }
-    }
-    
-    private func startTimer(timeInterval: Double) {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { timer in
-            withAnimation {
-                showPlayerControlButtons = false
             }
         }
     }
