@@ -28,7 +28,7 @@ struct ContentView: View {
                                     isPlaying: $isPlaying,
                                     timer: $timer,
                                     showPlayerControlButtons: $showControls,
-                                    avPlayer: $player, 
+                                    avPlayer: $player,
                                     currentIndex: $currentIndex,
                                     scrollViewProxy: value,
                                     results: viewModel.results
@@ -60,25 +60,24 @@ struct ContentView: View {
                                     }
                                 }
                                 
-                                VStack(spacing: 20) {
-                                    HStack {
-                                        VStack(alignment: .leading) {
-                                            Text(res.title)
-                                            Text(res.author.name)
-                                        }
-                                        Spacer()
-                                    }
-                                    
+                                VStack {
                                     ScrollView {
-                                        Text(res.description)
+                                        HStack {
+                                            VStack(alignment: .leading) {
+                                                Text("***\(res.title)***")
+                                                Text("*\(res.author.name)*")
+                                            }
+                                            Spacer()
+                                        }.padding(.bottom, 20)
+                                        
+                                        Text("***\(res.description)***")
                                             .frame(width: UIScreen.main.bounds.size.width)
                                     }
-                                }.padding(.leading, 5)
-                                    .padding(.trailing, 5)
+                                }.padding(.horizontal, 5)
                             }
                         }
                     }
-                }.navigationTitle("Video Player")
+                }.navigationTitle("*Video Player*")
             }
         }
     }
